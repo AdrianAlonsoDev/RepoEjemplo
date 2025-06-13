@@ -1,0 +1,269 @@
+
+Search
+Write
+Sign up
+
+Sign in
+
+
+
+Mastering React Router DOM with Vite: An Optimized Guide
+Navanitvishwakarma
+Navanitvishwakarma
+
+Follow
+3 min read
+·
+Aug 3, 2024
+5
+
+
+
+
+
+react-router-dom
+Introduction
+React Router DOM is essential for managing navigation in React apps. When paired with Vite, a fast build tool, you get an efficient development setup. This guide covers setting up and optimizing React Router DOM with Vite, illustrated by my Router Project on GitHub.
+
+Why Use React Router DOM with Vite?
+Vite provides a fast and efficient development experience. Its native ES modules and Hot Module Replacement (HMR) enhance React Router DOM’s navigation capabilities, resulting in seamless SPAs.
+
+Key Concepts
+Routes: Define paths and components.
+Link: Navigates between routes.
+Switch: Renders the first matching <Route>.
+BrowserRouter: Syncs UI with the URL using HTML5 history API.
+Optimized Setup
+Step 1: Create a Vite Project
+npm create vite@latest my-vite-router-app --template react
+cd my-vite-router-app
+npm install
+Step 2: Install React Router DOM
+
+npm install react-router-dom
+Step 3: Create Components
+
+// src/components/Home.jsx
+import React from 'react';
+
+const Home = () => <h1>Home Page</h1>;
+
+export default Home;
+// src/components/About.jsx
+import React from 'react';
+
+const About = () => <h1>About Page</h1>;
+
+export default About;
+// src/components/Contact.jsx
+import React from 'react';
+
+const Contact = () => <h1>Contact Page</h1>;
+
+export default Contact;
+Step 4: Configure Routes in App Component
+
+// src/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+
+const App = () => (
+  <Router>
+    <nav>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+      </ul>
+    </nav>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+    </Switch>
+  </Router>
+);
+
+export default App;
+Or we also add in main.jsx
+
+// src/main.jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import Layout from './Layout.jsx'
+import Home from './components/Home/Home.jsx'
+import About from './components/About/About.jsx'
+import Contact from './components/Contact/Contact.jsx'
+// const router = createBrowserRouter([
+//   {
+//     path: '/',
+//     element: <Layout/>,
+//     children: [
+//       {
+//         path: "",
+//         element: <Home />
+//       },
+//       {
+//         path: "about",
+//         element: <About />
+//       },
+//       {
+//         path: "contact",
+//         element: <Contact />
+//       }
+//     ]
+//   }
+// ])
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path='/home' element={<Home />} />
+      <Route path='about' element={<About />} />
+      <Route path='contact' element={<Contact />} />
+    </Route>
+  )
+)
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+
+  </React.StrictMode>,
+)
+Step 5: Run Your App
+
+npm run dev
+Example Project
+For a detailed example, visit my Router Project on GitHub. This project demonstrates React Router DOM with Vite, including nested routes and navigation guards.
+
+Conclusion
+👩‍🦱Combining React Router DOM with Vite optimizes your development workflow, allowing you to build dynamic, single-page applications efficiently. Try it out and start creating seamless navigation experiences in your React apps today!🔥
+
+Visual Example
+⚡I hope this guide helps you understand the optimized setup of React Router DOM with Vite. If you have any questions, feel free to leave a comment or reach out. Happy coding!⚡
+
+React Router Dom
+5
+
+
+
+Navanitvishwakarma
+Written by Navanitvishwakarma
+4 followers
+·
+31 following
+
+Follow
+No responses yet
+
+Write a response
+
+What are your thoughts?
+
+Cancel
+Respond
+More from Navanitvishwakarma
+Navanitvishwakarma
+Navanitvishwakarma
+
+SetTimeout in JavaScript
+Understanding setTimeout in JavaScript
+Feb 8, 2024
+SetTimeout in JavaScript
+See all from Navanitvishwakarma
+Recommended from Medium
+Setting Up ESLint and Prettier in a React Project with Vite
+Leandro A. Siqueira
+Leandro A. Siqueira
+
+Setting Up ESLint and Prettier in a React Project with Vite
+Linting and code formatting are essential for maintaining a clean and consistent codebase. In this guide, we’ll walk through setting up…
+
+Jan 20
+2
+React Router 7 Embraces Vite: What’s New and Why It Matters
+Level Up Coding
+In
+
+Level Up Coding
+
+by
+
+Yılmaz Çite
+
+React Router 7 Embraces Vite: What’s New and Why It Matters
+Discover how React Router 7’s integration with Vite boosts performance, SEO, simplifies builds, and enhances modern React app development…
+
+Dec 23, 2024
+276
+How to Keep Query Params While Navigating Using React Router
+Juan Otálora
+Juan Otálora
+
+How to Keep Query Params While Navigating Using React Router
+One of the biggest problems when trying to code a user-friendly navigation experience in your web application is keeping the query params…
+Dec 28, 2024
+1
+1
+7 React Patterns That Made Me a Better Front-End Developer
+Full Stack Forge
+In
+
+Full Stack Forge
+
+by
+
+Daniel Scott
+
+7 React Patterns That Made Me a Better Front-End Developer
+And Probably Saved Me From Smashing My Laptop Into a Wall
+
+Apr 11
+1.4K
+40
+Environment Variables in Vite React Application
+Sanchit
+Sanchit
+
+Environment Variables in Vite React Application
+Environment variables are key-value pairs that store configuration data for your app. These variables allow you to set up different…
+Mar 1
+1
+A Developer’s Guide to TanStack Table & ShadCN: UX-First Data Table Implementation
+Siddhesh Shirdhankar
+Siddhesh Shirdhankar
+
+A Developer’s Guide to TanStack Table & ShadCN: UX-First Data Table Implementation
+Non members click here
+
+Mar 23
+33
+See more recommendations
+Help
+
+Status
+
+About
+
+Careers
+
+Press
+
+Blog
+
+Privacy
+
+Rules
+
+Terms
+
+Text to speech
+
+To make Medium work, we log user data. By using Medium, you agree to our Privacy Policy, including cookie policy.
